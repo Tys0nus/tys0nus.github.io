@@ -6,6 +6,8 @@ Feel free to take a look around and check out the different sections of the webs
 
 Thank you for visiting my website and I hope you find it informative and interesting!
 
+![](https://github.com/Tys0nus.github.io/Resources/Intro.gif)
+
 ## Features
 - **Professional background**: Learn more about my qualifications and experience.
 - **Current projects**: See what I'm currently working on and my latest creations.
