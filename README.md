@@ -6,7 +6,7 @@ Feel free to take a look around and check out the different sections of the webs
 
 Thank you for visiting my website and I hope you find it informative and interesting!
 
-![](https://github.com/Tys0nus/Tys0nus.github.io/blob/main/Resources/Intro.gif)
+![](https://github.com/Tys0nus/Tys0nus.github.io/blob/main/Resources/Intro.gif = 250x250)
 
 ## Features
 - **Professional background**: Learn more about my qualifications and experience.
