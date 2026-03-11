@@ -1,0 +1,62 @@
+{
+  "version": 1,
+  "defaultSections": ["profile", "faq"],
+  "sections": [
+    {
+      "id": "profile",
+      "title": "Profile",
+      "file": "profile.json",
+      "keywords": ["name", "location", "role", "profile", "summary", "about", "who", "aditya", "contact"],
+      "alwaysLoad": false
+    },
+    {
+      "id": "education",
+      "title": "Education",
+      "file": "education.json",
+      "keywords": ["education", "academic", "background", "degree", "university", "gpa", "coursework", "masters", "bachelor"],
+      "alwaysLoad": false
+    },
+    {
+      "id": "skills",
+      "title": "Skills",
+      "file": "skills.json",
+      "keywords": ["skills", "tools", "technologies", "stack", "python", "matlab", "ros", "pytorch", "control", "cad"],
+      "alwaysLoad": false
+    },
+    {
+      "id": "projects",
+      "title": "Projects",
+      "file": "projects.json",
+      "keywords": ["project", "quadruped", "terrestra", "spiderbot", "trajectory", "rocket", "rrt", "asl", "turtlebot", "llm", "diffusion", "vehicle"],
+      "alwaysLoad": false
+    },
+    {
+      "id": "experience",
+      "title": "Experience",
+      "file": "experience.json",
+      "keywords": ["experience", "work", "career", "intern", "kick", "baja", "resonance", "terrapin", "leadership", "professional"],
+      "alwaysLoad": false
+    },
+    {
+      "id": "research",
+      "title": "Research",
+      "file": "research.json",
+      "keywords": ["research", "exploring", "interest", "current", "long-term", "vision", "future", "focus", "areas"],
+      "alwaysLoad": false
+    },
+    {
+      "id": "philosophy",
+      "title": "Philosophy",
+      "file": "philosophy.json",
+      "keywords": ["philosophy", "approach", "engineering", "style", "system", "thinking", "reasoning", "mindset"],
+      "alwaysLoad": false
+    },
+    {
+      "id": "faq",
+      "title": "FAQ",
+      "file": "faq.json",
+      "keywords": ["faq", "common", "question", "answer"],
+      "alwaysLoad": true
+    }
+  ]
+}

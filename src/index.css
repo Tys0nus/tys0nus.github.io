@@ -228,14 +228,14 @@ svg {
 /* Chat styles */
 .output {
   position: fixed; /* Add this */
-  bottom: calc(10px + 40px + 10px); /* Add this - adjust as needed */
+  bottom: 80px;
   left: 50%; /* Add this */
   transform: translateX(-50%); /* Add this */
-  width: 90%; 
-  max-width: 600px; 
-  height: 80px;
+  width: min(90vw, 600px);
+  min-height: 108px;
   border-radius: 15px;
-  padding: 10px 20px;
+  padding: 10px 0;
+  box-sizing: border-box;
   /* border: 2px solid var(--text); */
   resize: none;
   font-size: 1em;
@@ -244,31 +244,73 @@ svg {
   z-index: 1000; /* Add this */
 }
 
+.thinking-status {
+  font-size: 0.85em;
+  color: rgba(255, 255, 255, 0.92);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.45);
+  margin-bottom: 8px;
+  text-align: left;
+  min-height: 1.2em;
+}
+
 .output-box {
-  position: fixed; /* Add this */
-  bottom: calc(0px); /* Add this - adjust as needed */
-  left: 50%; /* Add this */
-  transform: translateX(-50%); /* Add this */
-  width: 100%; 
-  max-width: 600px; 
-  height: 50px;
-  border-radius: 15px;
-  padding: 10px 20px;
-  border: 2px solid var(--text);
-  resize: none;
+  position: relative;
+  bottom: auto;
+  left: auto;
+  transform: none;
+  width: 100%;
+  min-height: 92px;
+  max-height: min(34vh, 280px);
+  border-radius: 16px;
+  padding: 12px 16px;
+  border: 1px solid rgba(21, 21, 21, 0.35);
+  box-sizing: border-box;
   font-size: 1em;
-  background-color: rgba(255, 255, 255, 0.8);
+  line-height: 1.4;
+  overflow-y: auto;
+  overflow-x: hidden;
+  white-space: pre-wrap;
+  word-break: break-word;
+  scrollbar-gutter: stable;
+  display: block;
+  background-color: rgba(255, 255, 255, 0.72);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.14);
+  backdrop-filter: blur(10px);
   z-index: 1000; /* Add this */
+}
+
+.output-badge {
+  position: absolute;
+  top: 15px;
+  right: 2px;
+  font-size: 0.8em;
+  line-height: 1;
+  color: rgba(255, 255, 255, 0.96);
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.45);
+}
+
+.output-content {
+  display: block;
+}
+
+.output-box.is-empty {
+  color: rgba(21, 21, 21, 0.62);
+}
+
+.output-box.has-output {
+  color: var(--text);
 }
 
 .chat-container {
   position: fixed;
-  bottom: 10px; 
+  bottom: 44px;
   left: 50%;
   transform: translateX(-50%);
-  width: 90%; 
-  max-width: 600px; 
-  padding: 10px;
+  width: min(90vw, 600px);
+  padding: 0;
+  box-sizing: border-box;
   border-radius: 20px;
   backdrop-filter: blur(10px);
   text-align: center;
@@ -284,13 +326,16 @@ svg {
 }
 
 .input {
-  width: calc(100%); /* Reduce width to make room for the button */
-  height: 10px;
+  width: 100%;
+  min-height: 46px;
+  height: 46px;
   border-radius: 25px;
-  padding: 10px calc(20px + 50px) 20px 10px;
+  padding: 12px 56px 12px 14px;
   border: 2px solid var(--text);
+  box-sizing: border-box;
   resize: none;
   font-size: 1em;
+  line-height: 1.3;
   overflow: hidden;
 }
 
@@ -330,7 +375,7 @@ svg {
 
 .disclaimer {
   position: fixed;
-  bottom: -10px; 
+  bottom: 6px;
   left: 50%;
   transform: translateX(-50%);
   width: 90%; 

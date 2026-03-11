@@ -1,0 +1,31 @@
+{
+  "id": "profile",
+  "title": "Profile",
+  "blocks": [
+    {
+      "id": "identity",
+      "tags": ["identity", "summary", "about"],
+      "content": "Name: Aditya Chaugule. Location: United States. Role: Robotics Engineer. I build intelligent physical systems from first principles at the intersection of robotics, mechanical design, control systems, computational geometry, AI, and system integration."
+    },
+    {
+      "id": "contact",
+      "tags": ["contact", "email", "github", "linkedin", "website", "phone"],
+      "content": "Phone: (240) 580-4460. Email: aditya97@terpmail.umd.edu. Website: https://tys0nus.github.io/. GitHub: https://github.com/Tys0nus. LinkedIn: https://www.linkedin.com/in/adityachaugule/."
+    },
+    {
+      "id": "profile-style",
+      "tags": ["tone", "style", "communication", "quick-facts"],
+      "content": "I am a robotics engineer with a strong foundation in mechanical engineering, controls, simulation, computational geometry, and practical AI. My engineering style is simulation-first, control-driven, modular, and grounded in first-principles reasoning. I prefer concise, grounded, analytical communication with no hype."
+    },
+    {
+      "id": "professional-summary",
+      "tags": ["professional", "summary", "vision"],
+      "content": "I work at the boundary of robotics, controls, simulation, geometry, and system integration. I enjoy solving problems that combine mechanics, control, computation, and physical implementation. My long-term vision is to build compact, elegant robotic systems that combine mechanical intelligence, control-driven autonomy, and computational efficiency."
+    },
+    {
+      "id": "creative-interests",
+      "tags": ["creative", "fun", "interests"],
+      "content": "I enjoy 3D printing mechanical assemblies, designing model train systems from scratch, exploring motor winding concepts, solving morning mathematical puzzles, studying Latin, and combining artistic creativity with engineering."
+    }
+  ]
+}

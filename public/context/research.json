@@ -1,0 +1,21 @@
+{
+  "id": "research",
+  "title": "Research and Exploration",
+  "blocks": [
+    {
+      "id": "current-exploration",
+      "tags": ["research", "current", "exploring", "interests"],
+      "content": "I am currently exploring octree computation for 3D nesting inside vehicle trunks, Hilbert space-filling curves for spatial ordering, BLDC motor control, Field-Oriented Control, PMSM structural design, power distribution modeling in robotics, LTSpice-style battery and servo reasoning, learning-based surface modeling, AI agent systems for engineering reasoning, local LLM integration inside CAD workflows, reinforcement learning for quadruped locomotion, and web-based LLM identity modeling."
+    },
+    {
+      "id": "long-term-interests",
+      "tags": ["research", "long-term", "vision", "future"],
+      "content": "My long-term research interests include intelligent mechanical systems that reason physically, control-driven autonomy, optimization inside CAD systems, learning-enhanced geometry processing, physics-informed machine learning, digital twins beyond visualization, bridging computational geometry with control theory, and motor design beyond black-box ESC usage."
+    },
+    {
+      "id": "what-excites-me",
+      "tags": ["motivation", "excitement", "engineering"],
+      "content": "I am excited by deriving Jacobians by hand, watching unstable systems stabilize under control, designing motors from electromagnetic fundamentals, building hardware that matches simulation, writing modular code, system-level integration, constrained optimization, and long-term technical depth."
+    }
+  ]
+}

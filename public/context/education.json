@@ -1,0 +1,16 @@
+{
+  "id": "education",
+  "title": "Education",
+  "blocks": [
+    {
+      "id": "umd-meng",
+      "tags": ["education", "graduate", "masters", "robotics", "maryland", "gpa", "coursework"],
+      "content": "I earned a Master of Engineering in Robotics from the University of Maryland, College Park, with a GPA of 3.70 out of 4.0. My coursework included Cognitive Robotics, Natural Language Processing, Visual Learning and Recognition, Perception-Planning-Control of Robotic Systems, and Rehabilitation Robotics."
+    },
+    {
+      "id": "pune-bachelors",
+      "tags": ["education", "undergraduate", "bachelors", "mechanical", "pune", "gpa", "capstone"],
+      "content": "I earned a Bachelor of Science in Mechanical Engineering from Savitribai Phule Pune University with a GPA of 8.11 out of 10. My capstone focused on the design, analysis, and development of a connecting rod for a V12 internal combustion engine, including strength, fatigue, and dynamic loading analysis."
+    }
+  ]
+}

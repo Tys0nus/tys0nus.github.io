@@ -1,0 +1,71 @@
+{
+  "id": "projects",
+  "title": "Projects",
+  "blocks": [
+    {
+      "id": "terrestra",
+      "tags": ["quadruped", "terrestra", "robotics", "kinematics", "jacobian", "locomotion"],
+      "content": "Terrestra is my teleoperated quadruped spider robot project. It uses custom DH chain definitions, symbolic Jacobian generation, and a modular locomotion pipeline, with ROS tooling, Gazebo simulation, inverse-kinematics capability, integrated camera and LiDAR sensing, Raspberry Pi plus Arduino control, PCA9685 PWM hardware, LiPo battery modeling, tactile sensing with FSR, a top speed of 0.8 meters per second, a 1 kilogram payload capability, and future reinforcement-learning locomotion experiments."
+    },
+    {
+      "id": "human-trajectory",
+      "tags": ["trajectory", "lstm", "prediction", "pytorch"],
+      "content": "I conducted an ablation study of human trajectory prediction using a multi-module LSTM network. I studied position, relative velocity, and pose-keypoint embeddings, along with their effect on displacement error and pedestrian collision behavior."
+    },
+    {
+      "id": "imitation-learning",
+      "tags": ["drone", "imitation", "lstm", "vision"],
+      "content": "I explored stylized imitation learning for aerial selfie generation using an LSTM-based model with video-frame embeddings, subject pose embeddings, camera pose embeddings, and reconstruction learned through OpenSFM."
+    },
+    {
+      "id": "exoskeleton",
+      "tags": ["exoskeleton", "opensim", "biomechanics", "control"],
+      "content": "I designed and analyzed a fatigue-driven muscle-reflex exoskeleton simulation to assist individuals with spinal cord injuries and improve gait stability through neuromuscular control and biomechanical analysis."
+    },
+    {
+      "id": "rrt-neurosurgical",
+      "tags": ["rrt", "path-planning", "neurosurgical", "non-holonomic"],
+      "content": "I developed a Rapidly-exploring Random Trees path planning algorithm with non-holonomic constraints for steerable bevel-tipped needles in a 3D neurosurgical environment."
+    },
+    {
+      "id": "asl-recognition",
+      "tags": ["asl", "tensorflow", "lstm", "vision"],
+      "content": "I designed and trained an LSTM-based architecture for realtime ASL sign language action recognition from sequences of hand landmarks and achieved 97 percent categorical accuracy."
+    },
+    {
+      "id": "turtlebot-astar",
+      "tags": ["turtlebot", "astar", "ros", "navigation"],
+      "content": "I designed an A* path planning algorithm for TurtleBot3 navigation in a mapped environment and implemented navigation through a ROS publisher node, achieving a 95 percent success rate for shortest-path planning."
+    },
+    {
+      "id": "controls",
+      "tags": ["controls", "lqr", "lqg", "matlab", "dual-pendulum"],
+      "content": "I analyzed controllability and observability for a nonlinear dual-pendulum cart system, then designed LQR and LQG controllers in MATLAB and evaluated response under constant-force disturbances using Lyapunov stability reasoning."
+    },
+    {
+      "id": "llm-analysis",
+      "tags": ["llm", "vicuna", "decoding", "prompting"],
+      "content": "I studied large language models through a Vicuna 7B analysis project that explored top-k sampling, nucleus sampling, greedy search, beam search, zero-shot prompting, few-shot prompting, and representation bias."
+    },
+    {
+      "id": "diffusion-llm",
+      "tags": ["llm", "diffusion", "in-context-learning"],
+      "content": "I investigated in-context learning in diffusion language models using a latent-diffusion-based text generation approach focused on chain-of-thought style reasoning behavior."
+    },
+    {
+      "id": "rocket-landing",
+      "tags": ["rocket", "guidance", "monte-carlo", "control"],
+      "content": "I developed a high-fidelity predictive entry guidance simulation for vertical rocket landing in MATLAB and FlightGear, using advanced control design and Monte Carlo methods to achieve landing precision within 10 meters under varied conditions."
+    },
+    {
+      "id": "gearbox-diagnosis",
+      "tags": ["gearbox", "lstm", "diagnosis", "matlab"],
+      "content": "I built an LSTM-based gearbox degradation classifier from triaxial vibration signatures across varied speed and torque conditions and achieved 98 percent accuracy."
+    },
+    {
+      "id": "vehicle-integration",
+      "tags": ["vehicle-integration", "digital-mock-up", "geometry", "octrees", "hilbert"],
+      "content": "My vehicle integration work focuses on digital mock-up workflows, virtual builds, eBOM and change control, weight tracking, packaging interference checks, platform-variant studies, trunk packing, octrees, Hilbert ordering, distance-field ideas, and geometry-aware optimization."
+    }
+  ]
+}

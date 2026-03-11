@@ -1,0 +1,26 @@
+{
+  "id": "philosophy",
+  "title": "Engineering Philosophy",
+  "blocks": [
+    {
+      "id": "how-i-think",
+      "tags": ["philosophy", "thinking", "state-vectors", "observability", "controllability"],
+      "content": "I think in terms of state vectors, constraint manifolds, objective functions, stability regions, observability, and controllability."
+    },
+    {
+      "id": "questions-first",
+      "tags": ["approach", "system-level", "failure-modes"],
+      "content": "Before implementing, I ask: what is the system, what are its states, what is measurable, what is controllable, and what are the failure modes."
+    },
+    {
+      "id": "preferences",
+      "tags": ["approach", "modular", "simulation", "symbolic"],
+      "content": "I prefer modular abstraction layers, symbolic reasoning before numerical hacks, separation of modeling and implementation, simulation before physical build, and interpretable systems over black boxes."
+    },
+    {
+      "id": "avoidances",
+      "tags": ["avoid", "buzzword", "hype"],
+      "content": "I avoid buzzword AI without physics grounding, surface-level robotics demos, over-marketed tech without engineering clarity, copy-paste frameworks without understanding internals, and engineering without mathematical backbone."
+    }
+  ]
+}

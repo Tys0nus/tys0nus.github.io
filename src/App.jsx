@@ -1,11 +1,9 @@
-import { ShaderGradientCanvas, ShaderGradient } from 'shadergradient'
 import './App.css';
 import './index.css';
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, lazy, Suspense } from 'react';
 import Progress from './Progress';  // Import the Progress component
-import * as fiber from '@react-three/fiber'
-import * as drei from '@react-three/drei'
-import * as reactSpring from '@react-spring/three'
+
+const AnimatedBackground = lazy(() => import('./AnimatedBackground'));
 
 
 function App() {
@@ -15,19 +13,22 @@ function App() {
   const [error, setError] = useState('');
   const [question, setQuestion] = useState('');
   const [questions, setQuestions] = useState([]);
-  const [context, setContext] = useState('');
+  const [contextIndex, setContextIndex] = useState(null);
   const [output, setOutput] = useState('');
-
-  const [score, setScore] = useState(null);
+  const [outputMeta, setOutputMeta] = useState(null);
+  const [conversation, setConversation] = useState([]);
+  const [thinkingStatus, setThinkingStatus] = useState('');
+  const [showBackground, setShowBackground] = useState(false);
 
   const worker = useRef(null);
+  const thinkingClearTimer = useRef(null);
 
   useEffect(() => {
     // Load questions from questions.txt file
     fetch('/questions.txt')
       .then(response => response.text())
       .then(data => {
-        const questionsArray = data.split('\n');  // Split the text file into an array of questions
+        const questionsArray = data.split('\n').map(q => q.trim()).filter(Boolean);  // Split and clean the questions
         setQuestions(questionsArray);
         const randomQuestion = questionsArray[Math.floor(Math.random() * questionsArray.length)];  // Select a random question
         setQuestion(randomQuestion);  // Set the random question
@@ -39,13 +40,13 @@ function App() {
   }, []);
 
   useEffect(() => {
-    // Load context from context.txt file
-    fetch('/context.txt')
-      .then(response => response.text())
-      .then(data => setContext(data))
+    // Load context manifest
+    fetch('/context/index.json')
+      .then(response => response.json())
+      .then(data => setContextIndex(data))
       .catch(error => {
         console.error('Error loading context:', error);
-        setError('Error loading context file');
+        setError('Error loading context manifest');
       });
 
     if (!worker.current) {
@@ -55,31 +56,49 @@ function App() {
     }
 
     const onMessageReceived = (e) => {
+      if (thinkingClearTimer.current) {
+        clearTimeout(thinkingClearTimer.current);
+        thinkingClearTimer.current = null;
+      }
+
       switch (e.data.status) {
         case 'initiate':
           setReady(false);
+          setOutput('');
+          setOutputMeta(null);
           setProgressItems(prev => [...prev, e.data]);
+          setThinkingStatus('Downloading model files...');
           break;
         case 'progress':
           setProgressItems(prev => prev.map(item => (item.file === e.data.file ? { ...item, progress: e.data.progress } : item)));
+          setThinkingStatus('Downloading model files...');
           break;
         case 'done':
           setProgressItems(prev => prev.filter(item => item.file !== e.data.file));
           break;
         case 'ready':
           setReady(true);
+          setThinkingStatus('Model ready.');
+          break;
+        case 'thinking':
+          setThinkingStatus(e.data.message || 'Electra is thinking...');
           break;
         case 'update':
-          setOutput(e.data.output);
           break;
         case 'complete':
-          setOutput(e.data.output);  // Ensure the output state is updated
-          setScore(e.data.score);
+          setOutput(e.data.output);
+          setOutputMeta(e.data.metadata || null);
+          setConversation(prev => [...prev, { role: 'assistant', content: e.data.output }]);
           setDisabled(false);
+          setThinkingStatus('Answer ready.');
+          thinkingClearTimer.current = setTimeout(() => {
+            setThinkingStatus('');
+          }, 1500);
           break;
         case 'error':
           setError(e.data.error);
           setDisabled(false);
+          setThinkingStatus('');
           break;
         default:
           break;
@@ -88,37 +107,93 @@ function App() {
 
     worker.current.addEventListener('message', onMessageReceived);
 
-    return () => worker.current.removeEventListener('message', onMessageReceived);
+    return () => {
+      worker.current.removeEventListener('message', onMessageReceived);
+      if (thinkingClearTimer.current) {
+        clearTimeout(thinkingClearTimer.current);
+      }
+    };
+  }, []);
+
+  useEffect(() => {
+    const media = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+    let backgroundTimer;
+    let backgroundIdleId;
+
+    const updateBackground = () => {
+      if (backgroundTimer) {
+        clearTimeout(backgroundTimer);
+        backgroundTimer = null;
+      }
+
+      if (backgroundIdleId && 'cancelIdleCallback' in window) {
+        window.cancelIdleCallback(backgroundIdleId);
+        backgroundIdleId = null;
+      }
+
+      const saveData = Boolean(connection?.saveData);
+      const shouldEnable = !media.matches && !saveData;
+
+      if (!shouldEnable) {
+        setShowBackground(false);
+        return;
+      }
+
+      const enableBackground = () => setShowBackground(true);
+
+      if ('requestIdleCallback' in window) {
+        backgroundIdleId = window.requestIdleCallback(enableBackground, { timeout: 1800 });
+      } else {
+        backgroundTimer = setTimeout(enableBackground, 900);
+      }
+    };
+
+    updateBackground();
+    media.addEventListener('change', updateBackground);
+    connection?.addEventListener?.('change', updateBackground);
+
+    return () => {
+      if (backgroundTimer) {
+        clearTimeout(backgroundTimer);
+      }
+      if (backgroundIdleId && 'cancelIdleCallback' in window) {
+        window.cancelIdleCallback(backgroundIdleId);
+      }
+      media.removeEventListener('change', updateBackground);
+      connection?.removeEventListener?.('change', updateBackground);
+    };
   }, []);
 
   const answer = () => {
+    const trimmedQuestion = question.trim();
+
+    if (!trimmedQuestion) {
+      setError('Please enter a question.');
+      return;
+    }
+
     setDisabled(true);
-    setError(''); 
+    setError('');
+    setOutput('');
+    setOutputMeta(null);
+    setThinkingStatus('Reading your question...');
+
+    const nextConversation = [...conversation, { role: 'user', content: trimmedQuestion }];
+    setConversation(nextConversation);
+
     worker.current.postMessage({
-      question,
-      context,
+      question: trimmedQuestion,
+      contextIndex,
+      history: nextConversation.slice(-8),
     });
   };
 
   return (
     <>
-      <ShaderGradientCanvas
-        importedFiber={{ ...fiber, ...drei, ...reactSpring }}
-        style={{
-          position: 'fixed',  // Change from 'absolute' to 'fixed'
-          top: 0,
-          left: 0,  // Add this line
-          width: '100%',  // Add this line
-          height: '100%',  // Add this line
-          zIndex: -1,  // Add this line
-        }}
-      >
-        <ambientLight intensity={0.3}  />
-        <ShaderGradient
-          control='query'
-          urlString='https://www.shadergradient.co/customize?animate=on&axesHelper=off&bgColor1=%23000000&bgColor2=%23000000&brightness=1.2&cAzimuthAngle=180&cDistance=3.6&cPolarAngle=90&cameraZoom=1&color1=%23ff5005&color2=%23dbba95&color3=%23d0bce1&destination=onCanvas&embedMode=off&envPreset=city&format=gif&fov=45&frameRate=10&gizmoHelper=hide&grain=on&lightType=3d&pixelDensity=1.6&positionX=-1.4&positionY=0&positionZ=0&range=enabled&rangeEnd=40&rangeStart=0&reflection=0.1&rotationX=0&rotationY=10&rotationZ=50&shader=defaults&toggleAxis=false&type=waterPlane&uAmplitude=0&uDensity=2.3&uFrequency=5.5&uSpeed=0.4&uStrength=1&uTime=0&wireframe=false&zoomOut=false'
-        />
-      </ShaderGradientCanvas>
+      <Suspense fallback={null}>
+        {showBackground ? <AnimatedBackground /> : null}
+      </Suspense>
 
       <div className="container">
           <div className="profile-header">
@@ -142,12 +217,15 @@ function App() {
       </div>
 
       <div className="output">
-      {score !== null && ( // Conditionally render the score
-        <div className="accuracy-score" style={{ position: 'fixed', top: '10px', right: '10px', color: 'white' }}>
-          Accuracy: {Math.round(score * 100)}%
+      <div className="thinking-status">{thinkingStatus}</div>
+      {output && outputMeta ? (
+        <div className="output-badge">{`${outputMeta.confidence}% | ${outputMeta.sourceLabel}`}</div>
+      ) : null}
+      <div className={`output-box ${output ? 'has-output' : 'is-empty'}`}>
+        <div className="output-content">
+          {output ? output : (disabled ? 'Electra is thinking...' : 'Electra on standby... Ask about Aditya\'s work, skills, or projects.')}
         </div>
-      )}  
-      <textarea className="output-box" value={output} rows={2} readOnly placeholder="Electra on standby... Fire away your questions or try a sample query!"></textarea>
+      </div>
       </div>
 
       <div className="chat-container">
@@ -159,7 +237,7 @@ function App() {
 
       <div className='progress-bars-container'>
           {ready === false && (
-            <label>Loading Electra - a lightweight Transformer model... (only run once)</label>
+            <label>Loading Electra ... (first run downloads model)</label>
           )}
           {progressItems.map(data => (
             <div key={data.file}>
@@ -169,7 +247,7 @@ function App() {
       </div>
 
       <div className='disclaimer'>
-        Web-GPU LLM in testing phase. Exciting things coming soon!
+        Explore Aditya's projects and engineering through Electra - runs locally in your browser
       </div>
     </>
 
