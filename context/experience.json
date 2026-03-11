@@ -1,0 +1,46 @@
+{
+  "id": "experience",
+  "title": "Professional Experience",
+  "blocks": [
+    {
+      "id": "kick-robotics",
+      "tags": ["experience", "kick", "robotics", "slam", "navigation"],
+      "content": "At Kick Robotics in Maryland, I worked as a Robotics Engineer Intern and validated a custom software package for SLAM and autonomous navigation. I improved navigation accuracy by 20 percent and integrated camera and LiDAR sensors for warehouse monitoring."
+    },
+    {
+      "id": "baja-lead",
+      "tags": ["experience", "baja", "leadership", "simulation", "digital-twin"],
+      "content": "At BAJA SAEINDIA, I served as Virtual Dynamics Division Lead and trained more than 1000 engineering students on digital-twin BAJA buggy development. I introduced the Validation Event for 170 student teams and helped correlate virtual vehicle fidelity with physical vehicle performance through real-time simulation."
+    },
+    {
+      "id": "baja-member",
+      "tags": ["experience", "baja", "training", "carmaker"],
+      "content": "As a Virtual Dynamics Division Member at BAJA SAEINDIA, I conducted IPG CarMaker training for over 800 engineering students, supported all-terrain BAJA buggy development, and served as a race commentator for a live audience of over 5000 during the endurance event."
+    },
+    {
+      "id": "resonance-captain",
+      "tags": ["experience", "resonance", "captain", "leadership", "powertrain"],
+      "content": "At Resonance Racing, I served as Team Captain, led a 25-member team across technical, manufacturing, and marketing divisions, managed a budget above 25000 USD, directed red-team reviews and testing strategy, and improved productivity by 33 percent and cost-effectiveness by 15 percent."
+    },
+    {
+      "id": "resonance-powertrain-lead",
+      "tags": ["experience", "resonance", "gearbox", "powertrain"],
+      "content": "As Powertrain Division Lead at Resonance Racing, I led development of a robust drivetrain unit for an ATV, engineered a custom 2-stage reduction gearbox, integrated verification through KISSsoft, applied SAE and BIS standards, and improved efficacy and failure-mode detection by 20 percent."
+    },
+    {
+      "id": "resonance-powertrain-engineer",
+      "tags": ["experience", "resonance", "cad", "gearbox"],
+      "content": "As a Powertrain Engineer at Resonance Racing, I performed strength and material-selection calculations for a custom gearbox and final-drive axles, streamlined the CAD process for vehicle assemblies, and achieved a 150 percent improvement in lead time."
+    },
+    {
+      "id": "sae-club",
+      "tags": ["experience", "leadership", "sae", "coordination"],
+      "content": "As Vice Chairperson of the SAE Collegiate Club, I coordinated motorsports activities for six student teams, delivered presentations to administrators and stakeholders, and supported sponsorship negotiations and project funding."
+    },
+    {
+      "id": "terrapin-rockets",
+      "tags": ["experience", "terrapin", "rockets", "kalman", "controller"],
+      "content": "At Terrapin Rockets, I simulated feature parameters to tune controller performance, developed multivariate Kalman filter library packages, integrated sensors into flight software, and engineered a custom controller for a sounding rocket air-brake system targeting an apogee of 10000 feet."
+    }
+  ]
+}

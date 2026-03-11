@@ -1,9 +1,12 @@
-What did Aditya study?
-What is Aditya's specialization?
-What certifications does he have?
-Where did Aditya complete his Bachelors studies ?
-What was his capstone project during his Bachelors?
-What are some of the key skills Aditya possesses in engineering?
-What are some of the key skills Aditya possesses in computing?
-Can you describe one of the significant projects areas Aditya has worked on?
-What did Aditya do at Resonance Racing?
+What is Aditya’s academic background?
+What problems does Aditya enjoy solving most?
+Tell me about his quadruped robot.
+What is his work in vehicle integration about?
+How does he approach system-level engineering?
+What control systems has he built?
+What tools and technologies does he use?
+What research areas is he exploring?
+What is his philosophy on intelligent machines?
+What is he currently building?
+What does he build for fun?
+What’s his long-term vision in robotics?

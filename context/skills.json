@@ -1,0 +1,26 @@
+{
+  "id": "skills",
+  "title": "Skills",
+  "blocks": [
+    {
+      "id": "engineering-skills",
+      "tags": ["skills", "engineering", "mechanical", "design", "fmea", "solidworks", "ansys"],
+      "content": "My engineering skills include robotics, control systems, mechanical design, technical report writing, FMEA, Solidworks, Ansys, multibody simulation, interference analysis, and Digital Mock-Up workflows."
+    },
+    {
+      "id": "computing-skills",
+      "tags": ["skills", "computing", "python", "cplusplus", "matlab", "pytorch", "tensorflow", "ros", "gazebo", "webots"],
+      "content": "My computing toolkit includes deep learning, language models, computer vision, PyTorch, TensorFlow, ROS, ROS2, Gazebo, Webots, MATLAB, Python, and C++."
+    },
+    {
+      "id": "control-methods",
+      "tags": ["control", "pid", "lqr", "lqg", "kalman", "lyapunov", "output-feedback"],
+      "content": "I work with PID, LQR, LQG, Kalman filtering, Lyapunov stability reasoning, Monte Carlo optimization, and output feedback design."
+    },
+    {
+      "id": "geometry-skills",
+      "tags": ["geometry", "octrees", "hilbert", "optimization", "space-partitioning"],
+      "content": "My computational geometry work includes octrees, Hilbert curves, space partitioning, trunk packing reasoning, and geometry-aware optimization."
+    }
+  ]
+}
