@@ -1,0 +1,19 @@
+{
+  "applinks": {
+    "apps": [],
+    "details": [
+      {
+        "appIDs": [
+          "HDA3DKF4FQ.com.tys0nus.Neon"
+        ],
+        "components": [
+          {
+            "/": "/neon/*",
+            "comment": "Neon Meta Wearables DAT callbacks"
+          }
+        ]
+      }
+    ]
+  }
+}
+
